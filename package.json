@@ -1,0 +1,40 @@
+{
+  "name": "http-logger",
+  "version": "0.0.1",
+  "description": "Http-logger is a library made for logging all requests/responses from your routes. Currently http-logger is compatible with express only.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ledoctah/http-logger.git"
+  },
+  "keywords": [
+    "logs",
+    "express",
+    "http"
+  ],
+  "author": "Matheus Ferreira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ledoctah/http-logger/issues"
+  },
+  "homepage": "https://github.com/ledoctah/http-logger#readme",
+  "dependencies": {
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  }
+}
