@@ -13,6 +13,12 @@ export default class HttpLoggerConfig {
 
   public static truncateResponseData: boolean = false;
 
+  // eslint-disable-next-line no-unused-vars
+  public static modifyBody: (body: any) => any;
+
+  // eslint-disable-next-line no-unused-vars
+  public static modifyHeaders: (headers: any) => any;
+
   public static initialize(config?: HttpLoggerConfigData) {
     if (!config) {
       return;
@@ -27,5 +33,9 @@ export default class HttpLoggerConfig {
       HttpLoggerConfig.truncateResponseData = true;
       HttpLoggerConfig.maxResponseDataLength = config.maxResponseDataLength;
     }
+
+    HttpLoggerConfig.modifyBody = config.modifyBody || ((body: any) => body);
+    HttpLoggerConfig.modifyHeaders =
+      config.modifyHeaders || ((headers: any) => headers);
   }
 }
