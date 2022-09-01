@@ -1,8 +1,9 @@
 type HttpLoggerConfigData = {
   logsLocation?: string;
   hideTerminalLogs?: boolean;
-  excludeURLs?: string[];
+  excludeURLs?: RegExp;
   onlyLogResponses?: boolean;
+  maxResponseDataLength?: number;
 };
 
 export default HttpLoggerConfigData;

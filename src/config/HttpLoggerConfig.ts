@@ -5,9 +5,13 @@ export default class HttpLoggerConfig {
 
   public static hideTerminalLogs: boolean = false;
 
-  public static excludeURLs: string[] = [];
+  public static excludeURLs?: RegExp = undefined;
 
   public static onlyLogResponses: boolean = false;
+
+  public static maxResponseDataLength?: number = undefined;
+
+  public static truncateResponseData: boolean = false;
 
   public static initialize(config?: HttpLoggerConfigData) {
     if (!config) {
@@ -16,7 +20,12 @@ export default class HttpLoggerConfig {
 
     HttpLoggerConfig.logsLocation = config.logsLocation || './logs';
     HttpLoggerConfig.hideTerminalLogs = !!config.hideTerminalLogs;
-    HttpLoggerConfig.excludeURLs = config.excludeURLs || [];
+    HttpLoggerConfig.excludeURLs = config.excludeURLs;
     HttpLoggerConfig.onlyLogResponses = !!config.onlyLogResponses;
+
+    if (config.maxResponseDataLength) {
+      HttpLoggerConfig.truncateResponseData = true;
+      HttpLoggerConfig.maxResponseDataLength = config.maxResponseDataLength;
+    }
   }
 }
