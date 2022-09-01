@@ -14,7 +14,7 @@ export default function logHttpExpress(
   response: Response,
   next: NextFunction,
 ) {
-  if (HttpLoggerConfig.excludeURLs.includes(request.url)) {
+  if (HttpLoggerConfig.excludeURLs?.test(request.url)) {
     return next();
   }
 

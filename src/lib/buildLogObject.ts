@@ -1,3 +1,4 @@
+import HttpLoggerConfig from '../config/HttpLoggerConfig';
 import HttpLoggerData from '../core/types/HttpLoggerData';
 
 export default function buildLogObject(
@@ -10,6 +11,15 @@ export default function buildLogObject(
   const elapsedTime =
     type === 'response' ? `${endTime - startTime}ms` : undefined;
 
+  let responseData: object | string | undefined =
+    httpLoggerData.response?.responseData;
+
+  if (responseData && HttpLoggerConfig.truncateResponseData) {
+    responseData = JSON.stringify(
+      httpLoggerData.response?.responseData,
+    ).substring(0, HttpLoggerConfig.maxResponseDataLength);
+  }
+
   return {
     id: httpLoggerData.requestLogId,
     logType: type,
@@ -20,7 +30,7 @@ export default function buildLogObject(
     responseTimestamp: httpLoggerData.responseTimestamp,
     elapsedTime,
     request: httpLoggerData.request,
-    response: httpLoggerData.response,
+    response: responseData,
     error: httpLoggerData.error,
   };
 }
