@@ -1,6 +1,5 @@
 import logHttpExpress from './core/middlewares/logHttpExpress';
 import logErrorExpress from './core/middlewares/logErrorExpress';
+import setupLogger from './lib/setupLogger';
 
-// it will be added more functions later
-// eslint-disable-next-line import/prefer-default-export
-export { logHttpExpress, logErrorExpress };
+export { logHttpExpress, logErrorExpress, setupLogger };

@@ -1,5 +1,5 @@
 type HttpLoggerResponseData = {
-  responseData: object;
+  responseData?: object;
 };
 
 export default HttpLoggerResponseData;
