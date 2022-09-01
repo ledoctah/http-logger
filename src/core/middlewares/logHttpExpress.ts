@@ -14,16 +14,26 @@ export default function logHttpExpress(
   response: Response,
   next: NextFunction,
 ) {
+  if (HttpLoggerConfig.excludeURLs.includes(request.url)) {
+    return next();
+  }
+
   const modifiedRequest = request as ExpressRequest;
 
   applyRequestModifications(modifiedRequest);
 
   overwriteResponseFunctions(response, modifiedRequest);
 
+  if (!HttpLoggerConfig.onlyLogResponses) {
+    const logObject = buildLogObject('request', modifiedRequest.httpLogger);
+
+    Consola.info(logObject);
+  }
+
   response.on('finish', () => {
     modifiedRequest.httpLogger.request.params = request.params;
 
-    const logObject = buildLogObject(modifiedRequest.httpLogger);
+    const logObject = buildLogObject('response', modifiedRequest.httpLogger);
 
     if (HttpLoggerConfig.hideTerminalLogs) {
       return;

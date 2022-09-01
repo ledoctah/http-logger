@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto';
+import { randomUUID } from 'crypto';
 
 import HttpLoggerData from '../core/types/HttpLoggerData';
 import ExpressRequest from '../core/types/ExpressRequest';
@@ -6,7 +6,7 @@ import ExpressRequest from '../core/types/ExpressRequest';
 export default function applyRequestModifications(request: ExpressRequest) {
   request.httpLogger = {} as HttpLoggerData;
 
-  const requestLogId = randomBytes(16).toString('hex');
+  const requestLogId = randomUUID();
   const requestTimestamp = new Date();
 
   request.httpLogger.requestLogId = requestLogId;
