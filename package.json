@@ -1,6 +1,6 @@
 {
   "name": "http-logger",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Http-logger is a library made for logging all requests/responses from your routes. Currently http-logger is compatible with express only.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
